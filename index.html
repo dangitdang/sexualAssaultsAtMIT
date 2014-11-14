@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Sexual Assaults at MIT</title>
+        <script type="text/javascript" src="js/d3.min.js"></script>
+        <script src="http://d3js.org/queue.v1.min.js"></script>
+        <script src="js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="js/data.js"></script>
+        <link rel="stylesheet" href="bootstrap.min.css">
+        <link rel="stylesheet" href="custom.css">
+    </head>
+    <body>
+        <div class="title">
+            <h2> Visualizing Sexual Assaults at MIT</h2>
+            <ul>
+                <li class="stalked"><a href="#">Stalked</a></li>
+                <li class="abusive"><a href="#">Abusive Relationship</a></li>
+                <li class="harrased"><a href="#">Harrassed<a></li>
+                <li class="assaulted"><a href="#">Assaulted<a></li>
+        </div>
+        <div class="vis"></div>
+        <script>
+            $(".abusive").click(function(){
+                drawAbusive();
+                console.log(d3.select("svg").length);
+            });
+            $(".stalked").click(function(){
+                drawStalked();
+                console.log(d3.select("svg").length);
+            });
+            $(".harrased").click(function(){
+                drawHarrassed();
+                console.log(d3.select("svg").length);
+            });
+            $(".assaulted").click(function(){
+                drawAssaulted();
+                console.log(d3.select("svg").length);
+            });
+
+
+
+
+        </script>
+    </body>
+</html>
