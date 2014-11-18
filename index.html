@@ -11,15 +11,30 @@
         <link rel="stylesheet" href="custom.css">
     </head>
     <body>
-        <div class="title">
-            <h2> Visualizing Sexual Assaults at MIT</h2>
-            <ul>
-                <li class="stalked"><a href="#">Stalked</a></li>
-                <li class="abusive"><a href="#">Abusive Relationship</a></li>
-                <li class="harrased"><a href="#">Harrassed<a></li>
-                <li class="assaulted"><a href="#">Assaulted<a></li>
+        <div class="container" style="width:100%">
+            <table class="tg">
+                <colgroup>
+                <col style="width: 40%">
+                <col style="width: 60%">
+                </colgroup>
+              <tr>
+                <th class="tg-031e">
+                    <div class="title" style="height:650px">
+                        <h2> Visualizing Sexual Assaults at MIT</h2>
+                    <ul>
+                        <li class="stalked"><a href="#">Stalked</a></li>
+                        <li class="abusive"><a href="#">Abusive Relationship</a></li>
+                        <li class="harrased"><a href="#">Harrassed<a></li>
+                        <li class="assaulted"><a href="#">Assaulted<a></li>
+                    </div>
+                </th>
+                <th class="tg-031e">
+                    <div class="vis"></div>
+                </th>
+              </tr>
+            </table>
         </div>
-        <div class="vis"></div>
+
         <script>
             $(".abusive").click(function(){
                 drawAbusive();

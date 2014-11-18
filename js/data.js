@@ -145,14 +145,12 @@
                                   "Female Grad", "Male Grad"])
                          .rangeRoundBands([0,w],0.05);
         var yScale = d3.scale.linear()
-                        .domain([0,d3.max(dataset,function(d){
-                            return d.Percentage;
-                        })+1])
+                        .domain([0,16])
                         .range([0,h]);
         var axisScale = d3.scale.linear()
-                        .domain([0,d3.max(dataset,function(d){
-                            return d.Percentage;
-                        })])
+                        .domain([0,16//d3.max(dataset,function(d){
+                            //return d.Percentage;
+                        ])
                         .range([h,0]);
 
         var xAxis = d3.svg.axis()
