@@ -139,7 +139,7 @@
         drawData(stalkedData);
     }
     function drawData(dataset){
-
+        $(".facts").remove();
         var BarScale = d3.scale.ordinal()
                          .domain(["Female Undergrad","Male Undergrad",
                                   "Female Grad", "Male Grad"])
@@ -206,7 +206,7 @@
                .transition()
                .duration(1500)
                .attr({
-                   x: function(d,i){
+                   x: function(d){
                        return 35+ BarScale(d.Population);
                    },
                    y: function(d) {

@@ -4,9 +4,10 @@
         <meta charset="utf-8">
         <title>Sexual Assaults at MIT</title>
         <script type="text/javascript" src="js/d3.min.js"></script>
-        <script src="http://d3js.org/queue.v1.min.js"></script>
         <script src="js/jquery-1.11.1.min.js"></script>
-        <script type="text/javascript" src="js/data.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/misconduct.js"></script>
+        <script type="text/javascript" src="js/attitudes.js"></script>
         <link rel="stylesheet" href="bootstrap.min.css">
         <link rel="stylesheet" href="custom.css">
     </head>
@@ -21,11 +22,43 @@
                 <th class="tg-031e">
                     <div class="title" style="height:650px">
                         <h2> Visualizing Sexual Assaults at MIT</h2>
-                    <ul>
-                        <li class="stalked"><a href="#">Stalked</a></li>
-                        <li class="abusive"><a href="#">Abusive Relationship</a></li>
-                        <li class="harrased"><a href="#">Harrassed<a></li>
-                        <li class="assaulted"><a href="#">Assaulted<a></li>
+                        <ul class="nav">
+                            <li><h4 id="attitudes">Student Attitudes and Views</h4>
+                                <ul class="attAndViews" style="display:none">
+                                    <li><p id="experiencesAtMIT">Experiences</p></li>
+                                        <ul class="exp-nav" style="display:none">
+                                            <li class="undergrad">Undergrad</li>
+                                            <li class="graduate">Graduate</li>
+                                        </ul>
+                                    <li><p id="attitudesAtMIT">Attitudes</p></li>
+                                </ul>
+                            </li>
+                            <li><h4 id="misconduct">Sexual Misconduct</h4>
+                                <ul class="misconducts" style="display:none">
+                                    <li><p id="labeled">Labeled Experience </p>
+                                        <ul class="labeled-experience" style="display:none">
+                                            <li class="stalked">Stalked</li>
+                                            <li class="abusive">Abusive Relationship</li>
+                                            <li class="harrased">Harrassed</li>
+                                            <li class="assaulted">Assaulted</li>
+                                            <li class="raped">Raped</li>
+                                        </ul>
+                                    </li>
+                                    <li><p id="sexualAssault">Sexual Assault &amp Sexual Misconduct</p>
+                                        <ul class="assault-nav" style="display:none">
+                                            <li class="sexual-assault"> Sexual Assault<li>
+                                            <li class="sexual-misconduct"> Sexual Misconduct<li>
+                                        </ul>
+                                    <li><p id="reporting">Reporting</p></li>
+                                </ul>
+                            </li>
+                            <li><h4 id="behavior">Community Behaviors &amp Use of Institute Resources</h4>
+                                <ul class="resoure-nav" style="display:none">
+                                    <li class="bystander">Bystander Actions</li>
+                                    <li class="localResources">Institute and Local Resources</li>
+                                </ul>
+                            </li>
+                        <ul>
                     </div>
                 </th>
                 <th class="tg-031e">
@@ -36,22 +69,58 @@
         </div>
 
         <script>
+            $("#behavior").click(function(){
+                $(".resoure-nav").toggle(600);
+                $("h4").removeClass("active");
+                $(this).addClass("active");
+            });
+            $("#attitudes").click(function(){
+                drawIntro();
+                $(".attAndViews").toggle(600);
+                $("h4").removeClass("active");
+                $(this).addClass("active");
+            });
+            $("#experiencesAtMIT").click(function(){
+                $(this).addClass("active");
+                $(".exp-nav").toggle(600);
+            });
+            $("#misconduct").click(function(){
+                $(".misconducts").toggle(600);
+                $("h4").removeClass("active");
+                $(this).addClass("active");
+            });
+            $("#labeled").click(function(){
+                $(".labeled-experience").toggle(600);
+                $("p").removeClass("active");
+                $(this).addClass("active");
+            });
+            $("#sexualAssault").click(function(){
+                $(".assault-nav").toggle(600);
+                $("p").removeClass("active");
+                $(this).addClass("active");
+            });
             $(".abusive").click(function(){
                 drawAbusive();
-                console.log(d3.select("svg").length);
-            });
+                $(this).addClass("active").siblings().removeClass("active");
+                });
+
             $(".stalked").click(function(){
                 drawStalked();
-                console.log(d3.select("svg").length);
+                $(this).addClass("active").siblings().removeClass("active");
             });
             $(".harrased").click(function(){
                 drawHarrassed();
-                console.log(d3.select("svg").length);
+                $(this).addClass("active").siblings().removeClass("active");
             });
             $(".assaulted").click(function(){
                 drawAssaulted();
-                console.log(d3.select("svg").length);
+                $(this).addClass("active").siblings().removeClass("active");
             });
+            $(".raped").click(function(){
+                drawRaped();
+                $(this).addClass("active").siblings().removeClass("active");
+            });
+
 
 
 
