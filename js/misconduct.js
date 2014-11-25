@@ -140,6 +140,10 @@
     }
     function drawData(dataset){
         $(".facts").remove();
+        if (d3.selectAll("svg").size() > 1){
+            console.log(d3.selectAll("svg") + " in size");
+            d3.selectAll("svg").remove();
+        }
         var BarScale = d3.scale.ordinal()
                          .domain(["Female Undergrad","Male Undergrad",
                                   "Female Grad", "Male Grad"])

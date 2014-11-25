@@ -3,15 +3,19 @@
     <head>
         <meta charset="utf-8">
         <title>Sexual Assaults at MIT</title>
-        <script type="text/javascript" src="js/d3.min.js"></script>
+        <script src="http://d3js.org/d3.v3.min.js"></script>
         <script src="js/jquery-1.11.1.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+        <script src="js/radar-chart.js"></script>
         <script type="text/javascript" src="js/misconduct.js"></script>
         <script type="text/javascript" src="js/attitudes.js"></script>
         <link rel="stylesheet" href="bootstrap.min.css">
+        <link rel="stylesheet" href="css/radar-chart.css">
         <link rel="stylesheet" href="custom.css">
     </head>
     <body>
+        <div class=title-bar>
+            <h6> About</h6>
+        </div>
         <div class="container" style="width:100%">
             <table class="tg">
                 <colgroup>
@@ -99,10 +103,18 @@
                 $("p").removeClass("active");
                 $(this).addClass("active");
             });
+            $(".undergrad").click(function(){
+                drawUndergrad();
+                $(this).addClass("active").siblings().removeClass("active");
+            });
+            $(".graduate").click(function(){
+                drawGrad();
+                $(this).addClass("active").siblings().removeClass("active");
+            });
             $(".abusive").click(function(){
                 drawAbusive();
                 $(this).addClass("active").siblings().removeClass("active");
-                });
+            });
 
             $(".stalked").click(function(){
                 drawStalked();
