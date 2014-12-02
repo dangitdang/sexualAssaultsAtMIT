@@ -75,10 +75,10 @@ p {
 .vis {
     width: 100%;
     text-align:center;
-    padding-bottom: 75px
+
 }
 .container{
-    margin: 7% 0% 0% 0%;
+    margin-top:20px;
     padding:0;
 }
 .nav {
@@ -86,4 +86,38 @@ p {
 }
 .tg-031e {
     padding:0px;
+}
+#info {
+    position: absolute;
+    bottom: 0px;
+    left:0px;
+    width:100%;
+    height: auto;
+    padding: 10px;
+    text-align:center;
+    background-color: #ecf0f1;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 0px;
+    -webkit-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.4);
+    pointer-events: none;
+}
+#info p{
+    padding-top:5px;
+    font-size: 1.2em;
+    color: #2c3e50;
+    font-weight: normal;
+    opacity: 100%;
+    -webkit-transition:opacity 3s;
+    transition: opacity 3s;
+
+}
+.hidden {
+    display:none;
+    opacity: 100%;
+    -webkit-transition:opacity 3s;
+    transition: opacity 3s;
+
 }

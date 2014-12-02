@@ -100,6 +100,21 @@ function drawUndergrad(){
 function drawGrad(){
     drawStudentAttitudes(gradData);
 }
+function infoGetter(info){
+    infos = {
+        "rs1":"Made sexist remarks or jokes about women in your presence",
+        "rs2":"Made sexist remarks or jokes about men in your presence",
+        "rs3":"Made inappropriate comments about your or someone else's body, appearance or attractiveness",
+        "rs4":"Suggested or implied women don't have to meet the same intellectual standards men do to get into MIT",
+        "rs5":"Said crude or gross sexualthings to you, tried to get you to talk about sexual matters",
+        "rs6":"E-mailed, texted, or instant messaged offensive sexual jokes, stories, or pictures to you",
+        "rs7":"Told you about their sexual experiences when you did not want to hear them",
+        "rs8":"Repeatedly asked you on dates, to go to dinner, or get a drink even after you've said no",
+        "rs9":"Seemed to be brining you to engage in a romantic or sexual relationship with that person"
+    };
+    return(infos[info]);
+
+}
 function drawStudentAttitudes(data){
     if (d3.selectAll("svg").size > 1){
         d3.selectAll("svg").remove();
@@ -112,33 +127,76 @@ function drawStudentAttitudes(data){
     }
     $(".facts").remove();
     d3.selectAll("svg").remove();
+    // var vis = d3.select(".vis").append("svg")
+    //             .attr("width",680)
+    //             .attr("height",20)
+    // vis.append("text")
+    //     .attr("x",155)
+    //     .attr("y",20)
+    //     .style("text-anchor","middle")
+    //     .style("fill","white")
+    //     .text("Class Setting");
+    // vis.append("text")
+    //     .attr("x",465)
+    //     .attr("y")
     var cfg = {
-        w: 270,
-        h: 270,
+        w: 310,
+        h: 310,
         maxValue: 1,
         levels: 10,
-        TranslateX:0,
-        TranslateY:0,
         ExtraWidthX:30,
         ExtraWidthY:30,
         color: "#ff9061",
         gender: "male"
     };
     var cfg2 = {
-        w: 270,
-        h: 270,
+        w: 310,
+        h: 310,
         maxValue: 1,
         levels: 10,
-        TranslateX:0,
-        TranslateY:0,
         ExtraWidthX:30,
-        ExtraWidthY:30,
+        ExtraWidthY:50,
         color: "#59d8ec",
         gender: "female"
     };
-    RadarChart.draw(".vis",data[0],cfg2);
-    RadarChart.draw(".vis",data[1],cfg2);
-    RadarChart.draw(".vis",data[2],cfg);
-    RadarChart.draw(".vis",data[3],cfg);
+    RadarChart.draw(".vis",data[0],cfg2,"one");
+    RadarChart.draw(".vis",data[1],cfg2,"two");
+    RadarChart.draw(".vis",data[2],cfg,"three");
+    RadarChart.draw(".vis",data[3],cfg,"four");
 
+    $('circle').tooltipster({
+        theme: 'tooltipster-noir'
+    });
+    var chart = d3.select(".one");
+    chart.append("text")
+            .attr("x",170)
+            .attr("y",12)
+            .style("text-anchor","middle")
+            .style("fill","white")
+            .text("Class Settings");
+    chart.append("text")
+            .attr("transform","rotate(-90)")
+            .attr("x",-170)
+            .attr("y",-5)
+            .attr("dy","1em")
+            .style("text-anchor","middle")
+            .style("fill","white")
+            .text("Female");
+    d3.select(".two")
+            .append("text")
+            .attr("x",170)
+            .attr("y",12)
+            .style("text-anchor","middle")
+            .style("fill","white")
+            .text("Social Settings");
+    d3.select(".three")
+            .append("text")
+            .attr("transform","rotate(-90)")
+            .attr("x",-170)
+            .attr("y",-5)
+            .attr("dy","1em")
+            .style("text-anchor","middle")
+            .style("fill","white")
+            .text("Male");
+    console.log($('circle').length);
 }

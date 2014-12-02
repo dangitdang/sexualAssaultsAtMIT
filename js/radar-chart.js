@@ -9,7 +9,7 @@
 //http://nbremer.blogspot.nl/2013/09/making-d3-radar-chart-look-bit-better.html
 
 var RadarChart = {
-  draw: function(id, d, options){
+  draw: function(id, d, options, number){
   var cfg = {
 	 radius: 5,
 	 w: 600,
@@ -21,8 +21,8 @@ var RadarChart = {
 	 radians: 2 * Math.PI,
 	 opacityArea: 0.5,
 	 ToRight: 5,
-	 TranslateX: 80,
-	 TranslateY: 30,
+	 TranslateX: 15,
+	 TranslateY: 25,
 	 ExtraWidthX: 100,
 	 ExtraWidthY: 100,
 	 color: "#fff",
@@ -38,8 +38,8 @@ var RadarChart = {
 	}
 	cfg.maxValue = Math.max(cfg.maxValue, d3.max(d, function(i){
         return d3.max(i.map(function(o){
-            return o.value;}))}));;
-	var allAxis = (d[0].map(function(i, j){return i.axis}));
+            return o.value;}));}));
+	var allAxis = (d[0].map(function(i, j){return i.axis;}));
 	var total = allAxis.length;
 	var radius = cfg.factor*Math.min(cfg.w/2, cfg.h/2);
 	var Format = d3.format('%');
@@ -49,11 +49,11 @@ var RadarChart = {
 			.append("svg")
 			.attr("width", cfg.w+cfg.ExtraWidthX)
 			.attr("height", cfg.h+cfg.ExtraWidthY)
+            .attr("class", number)
 			.append("g")
 			.attr("transform", "translate(" + cfg.TranslateX + "," + cfg.TranslateY + ")");
-			;
 
-	var tooltip;
+
 
 	//Circular segments
 	for(var j=0; j<cfg.levels; j++){
@@ -186,6 +186,7 @@ var RadarChart = {
 		.attr("data-id", function(j){return j.axis})
         .attr("initialColor", cfg.color)
 		.style("fill", cfg.color).style("fill-opacity", .9)
+        .attr("title",function(j){return 100*Math.max(j.value, 0) + "%";})
 		.on('mouseover', function (d){
 					newX =  parseFloat(d3.select(this).attr('cx')) - 10;
 					newY =  parseFloat(d3.select(this).attr('cy')) - 5;
@@ -200,6 +201,12 @@ var RadarChart = {
 					g.selectAll(z)
 						.transition(200)
 						.style("fill-opacity", 0.7);
+                    $("."+d3.select(this).attr("data-id")).tooltipster('show');
+                    d3.select("#info")
+                        .select(".attInfo")
+                        .text(infoGetter(d3.select(this).attr("data-id")));
+                    d3.select("#info").classed("hidden",false);
+
 				  })
 		.on('mouseout', function(){
 					g.selectAll("polygon")
@@ -209,12 +216,13 @@ var RadarChart = {
                     allCircl.style('fill', "#ff9061");
                     allCircl = d3.selectAll(".female");
                     allCircl.style('fill', "#59d8ec");
+                    $("."+d3.select(this).attr("data-id")).tooltipster('hide');
+                    d3.select("#info").classed("hidden",true);
 				  })
-		.append("svg:title")
-		.text(function(j){return 100*Math.max(j.value, 0) + "%"});
+		// .append("svg:title")
+		// .text(function(j){return 100*Math.max(j.value, 0) + "%"});
 
 	  series++;
 	});
-	//Tooltip
   }
 };

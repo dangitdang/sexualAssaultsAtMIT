@@ -8,6 +8,9 @@
         <script src="js/radar-chart.js"></script>
         <script type="text/javascript" src="js/misconduct.js"></script>
         <script type="text/javascript" src="js/attitudes.js"></script>
+        <script src="js/jquery.tooltipster.min.js"></script>
+        <link rel="stylesheet" href="css/tooltipster.css">
+        <link rel="stylesheet" href="css/tooltipster-noir.css">
         <link rel="stylesheet" href="bootstrap.min.css">
         <link rel="stylesheet" href="css/radar-chart.css">
         <link rel="stylesheet" href="custom.css">
@@ -24,17 +27,13 @@
                 </colgroup>
               <tr>
                 <th class="tg-031e">
-                    <div class="title" style="height:650px">
+                    <div class="title" style="height:765px">
                         <h2> Visualizing Sexual Assaults at MIT</h2>
                         <ul class="nav">
-                            <li><h4 id="attitudes">Student Attitudes and Views</h4>
-                                <ul class="attAndViews" style="display:none">
-                                    <li><p id="experiencesAtMIT">Experiences</p></li>
-                                        <ul class="exp-nav" style="display:none">
-                                            <li class="undergrad">Undergrad</li>
-                                            <li class="graduate">Graduate</li>
-                                        </ul>
-                                    <li><p id="attitudesAtMIT">Attitudes</p></li>
+                            <li><h4 id="experiences">Student Experiences</h4>
+                                <ul class="exp-nav" style="display:none">
+                                    <li class="undergrad">Undergrad</li>
+                                    <li class="graduate">Graduate</li>
                                 </ul>
                             </li>
                             <li><h4 id="misconduct">Sexual Misconduct</h4>
@@ -48,11 +47,6 @@
                                             <li class="raped">Raped</li>
                                         </ul>
                                     </li>
-                                    <li><p id="sexualAssault">Sexual Assault &amp Sexual Misconduct</p>
-                                        <ul class="assault-nav" style="display:none">
-                                            <li class="sexual-assault"> Sexual Assault<li>
-                                            <li class="sexual-misconduct"> Sexual Misconduct<li>
-                                        </ul>
                                     <li><p id="reporting">Reporting</p></li>
                                 </ul>
                             </li>
@@ -67,6 +61,8 @@
                 </th>
                 <th class="tg-031e">
                     <div class="vis"></div>
+                    <div id="info" class="hidden">
+                        <p class="attInfo"></p></div>
                 </th>
               </tr>
             </table>
@@ -78,15 +74,11 @@
                 $("h4").removeClass("active");
                 $(this).addClass("active");
             });
-            $("#attitudes").click(function(){
+            $("#experiences").click(function(){
                 drawIntro();
-                $(".attAndViews").toggle(600);
+                $(".exp-nav").toggle(600);
                 $("h4").removeClass("active");
                 $(this).addClass("active");
-            });
-            $("#experiencesAtMIT").click(function(){
-                $(this).addClass("active");
-                $(".exp-nav").toggle(600);
             });
             $("#misconduct").click(function(){
                 $(".misconducts").toggle(600);
@@ -106,6 +98,7 @@
             $(".undergrad").click(function(){
                 drawUndergrad();
                 $(this).addClass("active").siblings().removeClass("active");
+                $("circle").tooltipster();
             });
             $(".graduate").click(function(){
                 drawGrad();

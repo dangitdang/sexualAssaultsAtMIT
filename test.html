@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Sexual Assaults at MIT</title>
+        <script src="http://d3js.org/d3.v3.min.js"></script>
+        <script src="js/jquery-1.11.1.min.js"></script>
+    </head>
+    <body>
+        <div class="vis"></div>
+        <script>
+            var rapedData = [
+                {
+                    "Situation": "raped",
+                    "Population": "Female Undergrad",
+                    "Percentage": 5,
+                    "Number": 38
+                },
+                {
+                    "Situation": "raped",
+                    "Population": "Male Undergrad",
+                    "Percentage": 1,
+                    "Number": 5
+                },
+                {
+                    "Situation": "raped",
+                    "Population": "Female Grad",
+                    "Percentage": 1,
+                    "Number": 5
+                },
+                {
+                    "Situation": "raped",
+                    "Population": "Male Grad",
+                    "Percentage": 0,
+                    "Number": 2
+                }
+            ];
+            var stalkedData = [{
+                "Situation": "stalked",
+                "Population": "Female Undergrad",
+                "Percentage": 14,
+                "Number": 109
+            },
+            {
+                "Situation": "stalked",
+                "Population": "Male Undergrad",
+                "Percentage": 2,
+                "Number": 16
+            },
+            {
+                "Situation": "stalked",
+                "Population": "Female Grad",
+                "Percentage": 9,
+                "Number": 58
+            },
+            {
+                "Situation": "stalked",
+                "Population": "Male Grad",
+                "Percentage": 3,
+                "Number": 27
+            }];
+            var abusiveData = [{
+                "Situation": "abusiveRelationship",
+                "Population": "Female Undergrad",
+                "Percentage": 8,
+                "Number": 67
+            },
+            {
+                "Situation": "abusiveRelationship",
+                "Population": "Male Undergrad",
+                "Percentage": 4,
+                "Number": 28
+            },
+            {
+                "Situation": "abusiveRelationship",
+                "Population": "Female Grad",
+                "Percentage": 4,
+                "Number": 26
+            },
+            {
+                "Situation": "abusiveRelationship",
+                "Population": "Male Grad",
+                "Percentage": 2,
+                "Number": 24
+            }];
+            var harassedData = [{
+                "Situation": "harassed",
+                "Population": "Female Undergrad",
+                "Percentage": 15,
+                "Number": 122
+            },
+            {
+                "Situation": "harassed",
+                "Population": "Male Undergrad",
+                "Percentage": 4,
+                "Number": 25
+            },
+            {
+                "Situation": "harassed",
+                "Population": "Female Grad",
+                "Percentage": 7,
+                "Number": 47
+            },
+            {
+                "Situation": "harassed",
+                "Population": "Male Grad",
+                "Percentage": 2,
+                "Number": 22
+            }];
+            var assaultedData =[{
+                "Situation": "assaulted",
+                "Population": "Female Undergrad",
+                "Percentage": 10,
+                "Number": 81
+            },
+            {
+                "Situation": "assaulted",
+                "Population": "Male Undergrad",
+                "Percentage": 2,
+                "Number": 13
+            },
+            {
+                "Situation": "assaulted",
+                "Population": "Female Grad",
+                "Percentage": 3,
+                "Number": 19
+            },
+            {
+                "Situation": "assaulted",
+                "Population": "Male Grad",
+                "Percentage": 1,
+                "Number": 6
+            }];
+
+var width = 680,
+    height = 680,
+    padding = 6, // separation between nodes
+    maxRadius = 12;
+
+var n = 400, // total number of nodes
+    m = 2; // number of distinct clusters
+
+var color = d3.scale.category10()
+    .domain(d3.range(m));
+
+var x = d3.scale.ordinal()
+    .domain(d3.range(m))
+    .rangePoints([0, width], 1);
+
+var y = d3.scale.ordinal()
+    .domain(d3.range(m))
+    .rangePoints([0, height],1);
+
+var count = 0
+var nodes = d3.range(n).map(function() {
+    var i,j, pop
+    if (count <=99){
+        pop = "femaleUn"
+        i = 0;
+        j = 0;
+    } else if (count <=199) {
+        pop = "maleUn"
+        i = 1;
+        j = 0;
+    } else if (count <=299) {
+        pop = "femaleGr"
+        i = 0;
+        j =1;
+    } else {
+        pop= "maleGr"
+        i = 1;
+        j = 1;
+    }
+    count ++;
+  return {
+    radius: 12,
+    color: color(i),
+    cx: x(i),
+    cy: y(j),
+    class:pop
+  };
+});
+
+var force = d3.layout.force()
+    .nodes(nodes)
+    .size([width, height])
+    .gravity(0)
+    .charge(0)
+    .on("tick", tick)
+    .start();
+
+var svg = d3.select("body").append("svg")
+    .attr("width", width)
+    .attr("height", height);
+
+var circle = svg.selectAll("image")
+    .data(nodes)
+  .enter().append("image")
+    .attr("class", function(d) { return d.class;})
+    .attr("r", function(d) { return d.radius; })
+    .attr("xlink:href", "human.png")
+    .attr("width", "22px")
+    .attr("height","22px");
+
+function tick(e) {
+  circle
+      .each(gravity(.2 * e.alpha))
+      .each(collide(.2))
+      .attr("cx", function(d) { return d.x; })
+      .attr("cy", function(d) { return d.y; })
+      .attr("x", function(d) {return d.x})
+      .attr("y",function(d){return d.y});
+}
+
+// Move nodes toward cluster focus.
+function gravity(alpha) {
+  return function(d) {
+    d.y += (d.cy - d.y) * alpha;
+    d.x += (d.cx - d.x) * alpha;
+  };
+}
+
+// Resolve collisions between nodes.
+function collide(alpha) {
+  var quadtree = d3.geom.quadtree(nodes);
+  return function(d) {
+    var r = d.radius + maxRadius + padding,
+        nx1 = d.x - r,
+        nx2 = d.x + r,
+        ny1 = d.y - r,
+        ny2 = d.y + r;
+    quadtree.visit(function(quad, x1, y1, x2, y2) {
+      if (quad.point && (quad.point !== d)) {
+        var x = d.x - quad.point.x,
+            y = d.y - quad.point.y,
+            l = Math.sqrt(x * x + y * y),
+            r = d.radius + quad.point.radius;
+        if (l < r) {
+          l = (l - r) / l * alpha;
+          d.x -= x *= l;
+          d.y -= y *= l;
+          quad.point.x += x;
+          quad.point.y += y;
+        }
+      }
+      return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
+    });
+  };
+}
+count =0
+var FemaleUn = d3.selectAll(".femaleUn");
+FemaleUn.each(function(d){
+    if (count < 8){
+        d.color = "red";
+    }
+    count ++;
+}).style("fill", function(d) { return d.color})
+
+        </script>
+    </body>
+</html>
