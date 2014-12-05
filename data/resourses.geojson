@@ -5,7 +5,7 @@
       "type": "Feature",
       "properties": {
         "name": "Violence Prevention Response ",
-        "Average": 39.5,
+        "average": 39.5,
         "femaleUn": 57,
         "maleUn": 39,
         "femaleGrad": 37,
