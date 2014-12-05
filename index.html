@@ -9,6 +9,8 @@
         <script type="text/javascript" src="js/misconduct.js"></script>
         <script type="text/javascript" src="js/attitudes.js"></script>
         <script src="js/jquery.tooltipster.min.js"></script>
+        <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
+        <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css' rel='stylesheet' />
         <link rel="stylesheet" href="css/tooltipster.css">
         <link rel="stylesheet" href="css/tooltipster-noir.css">
         <link rel="stylesheet" href="bootstrap.min.css">
@@ -51,10 +53,6 @@
                                 </ul>
                             </li>
                             <li><h4 id="behavior">Community Behaviors &amp Use of Institute Resources</h4>
-                                <ul class="resoure-nav" style="display:none">
-                                    <li class="bystander">Bystander Actions</li>
-                                    <li class="localResources">Institute and Local Resources</li>
-                                </ul>
                             </li>
                         <ul>
                     </div>
@@ -70,7 +68,6 @@
 
         <script>
             $("#behavior").click(function(){
-                $(".resoure-nav").toggle(600);
                 $("h4").removeClass("active");
                 $(this).addClass("active");
             });
@@ -125,11 +122,6 @@
                 drawRaped();
                 $(this).addClass("active").siblings().removeClass("active");
             });
-
-
-
-
-
         </script>
     </body>
 </html>

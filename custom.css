@@ -119,5 +119,7 @@ p {
     opacity: 100%;
     -webkit-transition:opacity 3s;
     transition: opacity 3s;
-
+}
+.affected:hover {
+   border:10px solid #ffffff;
 }
