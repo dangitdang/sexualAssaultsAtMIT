@@ -1,0 +1,113 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Violence Prevention Response ",
+        "Average": 39.5,
+        "femaleUn": 57,
+        "maleUn": 39,
+        "femaleGrad": 37,
+        "maleGrad": 25
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.08659625053406,
+          42.36113631958969
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "MIT Medical",
+        "average": 84.5,
+        "femaleUn": 80,
+        "maleUn": 78,
+        "femaleGrad": 94,
+        "maleGrad": 86
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.08660697937012,
+          42.360779573354684
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "MIT Mental Health",
+        "average": 76.25,
+        "femaleUn": 77,
+        "maleUn": 71,
+        "femaleGrad": 84,
+        "maleGrad": 73
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.08656406402588,
+          42.36158026763121
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "MIT Chaplains",
+        "average": 10,
+        "femaleUn": 8,
+        "maleUn": 11,
+        "femaleGrad": 9,
+        "maleGrad": 12
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.09306573867798,
+          42.35920193794261
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "MIT Ombuds Office",
+        "average": 11.75,
+        "femaleUn": 5,
+        "maleUn": 7,
+        "femaleGrad": 19,
+        "maleGrad": 16
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.09201431274414,
+          42.35968553893724
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Boston Rape Crisis Center",
+        "average": 31.25,
+        "femaleUn": 30,
+        "maleUn": 24,
+        "femaleGrad": 39,
+        "maleGrad": 32
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.10325813293457,
+          42.365329917913314
+        ]
+      }
+    }
+  ]
+}
