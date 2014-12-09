@@ -108,6 +108,76 @@
           42.365329917913314
         ]
       }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Residential Life Staff",
+        "average": 32.5,
+        "femaleUn": 46,
+        "maleUn": 48,
+        "femaleGrad": 17,
+        "maleGrad": 19
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.09785079956055,
+          42.35618132947636
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Student Support Services",
+        "average": 72.5,
+        "femaleUn": 74,
+        "maleUn": 71
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.09280824661255,
+          42.35854391749705
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "MIT Police",
+        "average": 72,
+        "femaleUn": 58,
+        "maleUn": 66,
+        "femaleGrad": 82,
+        "maleGrad": 82
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.10377311706543,
+          42.35595933677513
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Local Police",
+        "average": 47.25,
+        "femaleUn": 27,
+        "maleUn": 34,
+        "femaleGrad": 62,
+        "maleGrad": 66
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.08587741851805,
+          42.36694703416394
+        ]
+      }
     }
   ]
 }
