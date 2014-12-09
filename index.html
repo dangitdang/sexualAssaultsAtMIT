@@ -6,16 +6,25 @@
         <script src="http://d3js.org/d3.v3.min.js"></script>
         <script src="js/jquery-1.11.1.min.js"></script>
         <script src="js/radar-chart.js"></script>
-        <script type="text/javascript" src="js/misconduct.js"></script>
-        <script type="text/javascript" src="js/attitudes.js"></script>
-        <script src="js/jquery.tooltipster.min.js"></script>
         <script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
         <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css' rel='stylesheet' />
+        <script type="text/javascript" src="js/misconduct.js"></script>
+        <script type="text/javascript" src="js/attitudes.js"></script>
+        <script type="text/javascript" src="js/resources.js"></script>
+        <script src="js/jquery.tooltipster.min.js"></script>
+
         <link rel="stylesheet" href="css/tooltipster.css">
         <link rel="stylesheet" href="css/tooltipster-noir.css">
         <link rel="stylesheet" href="bootstrap.min.css">
         <link rel="stylesheet" href="css/radar-chart.css">
         <link rel="stylesheet" href="custom.css">
+        <style>
+        #map {
+            margin: auto;
+            height: 680px;
+            width: 800px;
+        }
+        </style>
     </head>
     <body>
         <div class=title-bar>
@@ -30,7 +39,7 @@
               <tr>
                 <th class="tg-031e">
                     <div class="title" style="height:765px">
-                        <h2> Visualizing Sexual Assaults at MIT</h2>
+                        <h2> Visualizing Sexual Assault at MIT</h2>
                         <ul class="nav">
                             <li><h4 id="experiences">Student Experiences</h4>
                                 <ul class="exp-nav" style="display:none">
@@ -69,17 +78,21 @@
         <script>
             $("#behavior").click(function(){
                 $("h4").removeClass("active");
+                $(".active").removeClass("active");
                 $(this).addClass("active");
+                drawMap();
             });
             $("#experiences").click(function(){
                 drawIntro();
                 $(".exp-nav").toggle(600);
                 $("h4").removeClass("active");
+                $(".active").removeClass("active");
                 $(this).addClass("active");
             });
             $("#misconduct").click(function(){
                 $(".misconducts").toggle(600);
                 $("h4").removeClass("active");
+                $(".active").removeClass("active");
                 $(this).addClass("active");
             });
             $("#labeled").click(function(){

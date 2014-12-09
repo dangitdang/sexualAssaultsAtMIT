@@ -116,6 +116,7 @@ function infoGetter(info){
 
 }
 function drawStudentAttitudes(data){
+    $(".vis").html("");
     if (d3.selectAll("svg").size > 1){
         d3.selectAll("svg").remove();
     }
@@ -134,7 +135,7 @@ function drawStudentAttitudes(data){
     //     .attr("x",155)
     //     .attr("y",20)
     //     .style("text-anchor","middle")
-    //     .style("fill","white")
+    //     .style("fill","#666666")
     //     .text("Class Setting");
     // vis.append("text")
     //     .attr("x",465)
@@ -172,7 +173,7 @@ function drawStudentAttitudes(data){
             .attr("x",170)
             .attr("y",12)
             .style("text-anchor","middle")
-            .style("fill","white")
+            .style("fill","#666666")
             .text("Class Settings");
     chart.append("text")
             .attr("transform","rotate(-90)")
@@ -180,14 +181,14 @@ function drawStudentAttitudes(data){
             .attr("y",-5)
             .attr("dy","1em")
             .style("text-anchor","middle")
-            .style("fill","white")
+            .style("fill","#666666")
             .text("Female");
     d3.select(".two")
             .append("text")
             .attr("x",170)
             .attr("y",12)
             .style("text-anchor","middle")
-            .style("fill","white")
+            .style("fill","#666666")
             .text("Social Settings");
     d3.select(".three")
             .append("text")
@@ -196,7 +197,7 @@ function drawStudentAttitudes(data){
             .attr("y",-5)
             .attr("dy","1em")
             .style("text-anchor","middle")
-            .style("fill","white")
+            .style("fill","#666666")
             .text("Male");
     console.log($('circle').length);
 }

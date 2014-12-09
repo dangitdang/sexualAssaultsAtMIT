@@ -144,6 +144,7 @@ var width = 680,
 function drawData(data){
     $(".facts").remove();
     d3.selectAll("svg").remove();
+    $(".vis").html("");
     var n = 400, // total number of nodes
         m = 2; // number of distinct clusters
 
@@ -223,7 +224,7 @@ function drawData(data){
             d.x += (d.cx - d.x) * alpha;
         };
     }
-    
+
     // Resolve collisions between nodes.
     function collide(alpha) {
         var quadtree = d3.geom.quadtree(nodes);
@@ -256,7 +257,7 @@ function drawData(data){
         .attr("x", -50)
         .attr("y", 12)
         .style("text-anchor","middle")
-        .style("fill","white")
+        .style("fill","#666666")
         .text("Undergraduate")
         .transition()
         .duration(1500)
@@ -265,7 +266,7 @@ function drawData(data){
         .attr("x", -50)
         .attr("y", 12)
         .style("text-anchor","middle")
-        .style("fill","white")
+        .style("fill","#666666")
         .text("Graduate")
         .transition()
         .duration(1500)
@@ -276,7 +277,7 @@ function drawData(data){
         .attr("y", 0)
         .attr("dy","1em")
         .style("text-anchor","middle")
-        .style("fill","white")
+        .style("fill","#666666")
         .text("Female")
         .transition()
         .duration(1500)
@@ -287,7 +288,7 @@ function drawData(data){
         .attr("y", 0)
         .attr("dy","1em")
         .style("text-anchor","middle")
-        .style("fill","white")
+        .style("fill","#666666")
         .text("Male")
         .transition()
         .duration(1500)

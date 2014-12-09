@@ -2,7 +2,7 @@ ul>li{
     text-align: left;
     font-size: 1em;
     width: 100%;
-    color: #878787;
+    color: #9AA0A1;
     cursor:pointer;
 }
 .title-bar {
@@ -14,7 +14,7 @@ h6 {
     font-size: 1.25em;
 }
 .active {
-    color: #FCFBE3;
+    color: #008093;
     -webkit-transition:color 1s;
     transition:color 1s;
 }
@@ -26,7 +26,7 @@ a {
 }
 
 .facts {
-    color:#DAE9E5;
+    color:#00A8C6;
     font-size:1.25em;
     text-align:left;
     padding-left: 30px;
@@ -42,17 +42,17 @@ ul {
 
 }
 h2 {
-    color: #F9CDAD;
+    color: #FF4242;
     font-size: 5em;
     padding-left: 50px;
 
 }
 h4 {
-    color:#878787;
+    color:#9AA0A1;
     font-size: 1.5em;
 }
 body {
-    background:#1d1d1d;
+    background:#F0F2EB;
 }
 
 .axis path,
@@ -70,10 +70,16 @@ body {
 }
 p {
     font-size: 1.25em;
-    color: #878787;
+    color: #9AA0A1;
+}
+p:hover, h4:hover, li:hover{
+    color: #008093;
 }
 .vis {
+    max-width: 1018px;
+    min-width: 720px;
     width: 100%;
+    height:100%;
     text-align:center;
 
 }
@@ -113,6 +119,13 @@ p {
     -webkit-transition:opacity 3s;
     transition: opacity 3s;
 
+}
+#map {
+    position:relative;
+    top:0;
+    bottom:0;
+    height: 100%;
+    width:100%;
 }
 .hidden {
     display:none;
