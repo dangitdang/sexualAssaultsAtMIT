@@ -31,8 +31,9 @@ function drawGraph(){
     xScale.domain(data.map(function(d) {return d.category;}));
     svg.append("text")
         .attr("class", "chartTitle")
-        .attr("x",0)
-        .attr("y",-26)
+        .attr("x",740/2)
+        .attr("y",0)
+        .attr("text-anchor","middle")
         .text("Why are you not reporting?");
 
     svg.append("g")
@@ -47,8 +48,28 @@ function drawGraph(){
 
     svg.selectAll("rect")
         .data(data)
-        .enter().append("rect")
+        .enter()
+        .append("rect")
+
         .attr("class","bar")
+        .attr("x", function(d){
+            return xScale(d.category);
+        })
+        .attr("width", function(d){
+            return xScale.rangeBand();
+        })
+        .attr("y", function(d){
+            return  height - yScale(d.value);
+        })
+        .attr("title", function(d){
+            return (d.value *100).toFixed(0) + "%";
+        })
+
+        .attr("height", 0);
+    svg.selectAll("rect")
+        .data(data)
+        .transition()
+        .duration(1000)
         .attr("x", function(d){
             return xScale(d.category);
         })
@@ -58,11 +79,14 @@ function drawGraph(){
         .attr("y", function(d){
             return yScale(d.value);
         })
-        .transition()
-        .duration(1000)
+
         .attr("height", function(d){
             return height - yScale(d.value);
         });
+    $(".bar").tooltipster({
+        theme: 'tooltipster-noir',
+        offsetX: 64
+    });
 }
 function wrap(text, width) {
   text.each(function() {

@@ -1,12 +1,13 @@
 var w = 600,
     h = 500;
-var facts= ["More than 8 out of 10 (78% of female respondents and 85% of male respondents) agree or strongly agree"+"that MIT students respect each other’s personal space.","More than 9 out of 10 respondents (91% of female respondents and 89% of male respondents) agree or"+"strongly agree that their friends would watch out for them at a party or social event if it seemed like something bad might happen.","More than 9 out of 10 respondents (91% of female respondents and 94% of male respondents) agree or strongly agree that most MIT students would respect someone who did something to prevent a sexual assault."]
+var facts= ["More than 8 out of 10 (78% of female respondents and 85% of male respondents) agree or strongly agree "+"that MIT students respect each other’s personal space.","More than 9 out of 10 respondents (91% of female respondents and 89% of male respondents) agree or "+"strongly agree that their friends would watch out for them at a party or social event if it seemed like something bad might happen.","More than 9 out of 10 respondents (91% of female respondents and 94% of male respondents) agree or strongly agree that most MIT students would respect someone who did something to prevent a sexual assault."]
 function drawIntro(){
     if (!d3.select("svg").empty()){
         var svg = d3.selectAll("svg");
         svg.remove()
            .transition()
            .duration(1000);
+    $(".vis").html("");
         $('<p class="facts">' +facts[0] +'<br></p>').appendTo(".vis").hide();
         $('<p class="facts">' +facts[1] +'<br></p>').appendTo(".vis").hide();
         $('<p class="facts">' +facts[2] +'</p>').appendTo(".vis").hide();
@@ -200,4 +201,8 @@ function drawStudentAttitudes(data){
             .style("fill","#666666")
             .text("Male");
     console.log($('circle').length);
+    d3.select("#info")
+        .select(".attInfo")
+        .text("The charts below documents what MIT students experienced while at MIT in class, lab or work, social settings or elsewhere at MIT. Hover over a data point to learn more!");
+    d3.select("#info").classed("hidden",false);
 }

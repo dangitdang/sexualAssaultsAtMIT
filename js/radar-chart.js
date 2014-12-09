@@ -173,7 +173,7 @@ var RadarChart = {
 		.attr("data-id", function(j){return j.axis})
         .attr("initialColor", cfg.color)
 		.style("fill", cfg.color).style("fill-opacity", .9)
-        .attr("title",function(j){return 100*Math.max(j.value, 0) + "%";})
+        .attr("title",function(j){return (100*Math.max(j.value, 0)).toFixed(0) + "%";})
 		.on('mouseover', function (d){
 					newX =  parseFloat(d3.select(this).attr('cx')) - 10;
 					newY =  parseFloat(d3.select(this).attr('cy')) - 5;

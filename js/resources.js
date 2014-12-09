@@ -60,4 +60,8 @@ function drawMap(){
                      e.layer.closePopup();
                 });
              });
+    d3.select("#info")
+        .select(".attInfo")
+        .text("Hover over a data point to learn more!");
+    d3.select("#info").classed("hidden",false);
 }
