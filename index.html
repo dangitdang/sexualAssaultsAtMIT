@@ -11,6 +11,7 @@
         <script type="text/javascript" src="js/misconduct.js"></script>
         <script type="text/javascript" src="js/attitudes.js"></script>
         <script type="text/javascript" src="js/resources.js"></script>
+        <script type="text/javascript" src="js/reporting.js"></script>
         <script src="js/jquery.tooltipster.min.js"></script>
 
         <link rel="stylesheet" href="css/tooltipster.css">
@@ -27,9 +28,6 @@
         </style>
     </head>
     <body>
-        <div class=title-bar>
-            <h6> About</h6>
-        </div>
         <div class="container" style="width:100%">
             <table class="tg">
                 <colgroup>
@@ -40,6 +38,11 @@
                 <th class="tg-031e">
                     <div class="title" style="height:765px">
                         <h2> Visualizing Sexual Assault at MIT</h2>
+                        <div class="about">
+                            <h6> All of the data presented on this website was taken from the MIT Sexual Assault Survey</h6>
+                            <h6> The survey has a response rate of 35%, or 3,844 students. </h6>
+                            <h6>Hover over the data for an interaction experience</h6>
+                        <div>
                         <ul class="nav">
                             <li><h4 id="experiences">Student Experiences</h4>
                                 <ul class="exp-nav" style="display:none">
@@ -63,8 +66,12 @@
                             </li>
                             <li><h4 id="behavior">Community Behaviors &amp Use of Institute Resources</h4>
                             </li>
-                        <ul>
+                        </ul>
+                        <div class="about">
+                            <h6>Made by Dang Pham with D3.js<h6>
+                        </div>
                     </div>
+
                 </th>
                 <th class="tg-031e">
                     <div class="vis"></div>
@@ -134,6 +141,9 @@
             $(".raped").click(function(){
                 drawRaped();
                 $(this).addClass("active").siblings().removeClass("active");
+            });
+            $("#reporting").click(function(){
+                drawGraph();
             });
         </script>
     </body>

@@ -147,7 +147,7 @@ function drawStudentAttitudes(data){
         levels: 10,
         ExtraWidthX:30,
         ExtraWidthY:30,
-        color: "#ff9061",
+        color: "#47A7C8",
         gender: "male"
     };
     var cfg2 = {
@@ -157,7 +157,7 @@ function drawStudentAttitudes(data){
         levels: 10,
         ExtraWidthX:30,
         ExtraWidthY:50,
-        color: "#59d8ec",
+        color: "#47A7C8",
         gender: "female"
     };
     RadarChart.draw(".vis",data[0],cfg2,"one");

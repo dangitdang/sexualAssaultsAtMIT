@@ -1,46 +1,22 @@
 
 
 //TODO: Generate html code
-function chartGenerator(point){
-    console.log(point)
-    var data = [point.feature.properties.femaleUn,point.feature.properties.maleUn,point.feature.properties.femaleGrad,point.feature.properties.maleGrad];
-    var names = ["Female Undergraduate","Male Undergraduate","Female Graduate","Male Graduate"];
-    var svg = d3.select("#"+point.feature.properties.name.replace(" ",""))
-                .append("svg")
-                .attr("width",280)
-                .attr("height",100);
-    var xScale = d3.scale.linear()
-                    .domain([0,100])
-                    .range([0,100]);
-    var yScale = d3.scale.ordinal()
-                    .domain(data)
-                    .rangeBands([0,100]);
-    var bars = d3.selectAll("rect")
-                    .data(data)
-                    .enter().append("rect")
-                    .attr("x",100)
-                    .attr("y",yScale)
-                    .attr("width", xScale)
-                    .attr("height", yScale.rangeBand());
-
-    bars.selectAll("text.score")
-        .data(data)
-        .enter().append("text")
-        .attr("x", function(d) { return xScale(d) + 100;})
-        .attr("y", function(d){ return yScale(d)+ yScale.rangeBand()/2;})
-        .attr("dx",-5)
-        .attr("dy",".36em")
-        .attr("text-anchor","end")
-        .text(String);
-
-    bars.selectAll("text.names")
-        .data(names)
-        .enter().append("text")
-        .attr("x",100/2)
-        .attr("y", function(d,i) { return 20 * i;})
-        .attr("dy",".36em")
-        .attr("text-anchor","middle")
-        .text(String);
+function chartGenerator(feature){
+    var chart = "<svg class=chart width='450'+ height='100'>"+
+    "<rect x='130' y='0' width='"  + (feature.properties.femaleUn*3)+"' height='20'></rect>"+
+    "<rect x='130' y='20' width='" + (feature.properties.maleUn*3) +"' height='20'></rect>"+
+    "<rect x='130' y='40' width='" +(feature.properties.femaleGrad*3) +"' height='20'></rect>"+
+    "<rect x='130' y='60' width='" +(feature.properties.maleGrad*3) +"' height='20'></rect>"+
+    "<text x='" + (130+feature.properties.femaleUn*3)+"' y='10' dx='-5' dy='.36em' text-anchor='end'>" +feature.properties.femaleUn+"</text>"+
+    "<text x='" + (130+feature.properties.maleUn*3) +"' y='30' dx='-5' dy='.36em' text-anchor='end'>"+ feature.properties.maleUn+"</text>"+
+    "<text x='" + (130+feature.properties.femaleGrad*3) +"' y='50' dx='-5' dy='.36em' text-anchor='end'>" + feature.properties.femaleGrad+"</text>"+
+    "<text x='" + (130+feature.properties.maleGrad*3) +"' y='70' dx='-5' dy='.36em' text-anchor='end'>" + feature.properties.maleGrad+"</text>"+
+    "<text x='0' y='10' dy='.36em' text-anchor='left' class='name'>Female Undergraduate</text>"+
+    "<text x='0' y='30' dy='.36em' text-anchor='left' class='name'>Male Undergraduate</text>"+
+    "<text x='0' y='50' dy='.36em' text-anchor='left' class='name'>Female Graduate</text>"+
+    "<text x='0' y='70' dy='.36em' text-anchor='left' class='name'>Male Graduate</text>"+
+    "</svg>";
+    return chart;
 }
 
 
@@ -66,20 +42,11 @@ function drawMap(){
                         weight: 0.5,
                         color: '#fff'
                     }).bindPopup(
-                        "<h2 style='padding:0, text-align:center'>"+feature.properties.name+"</h2>"+
-                        "<p style='padding:0; font-size:1em'> How likely would you use this resouce the next time you're assaulted ?</p>"+
-                        "<svg class=chart width='400'+ height='100'>"+
-                        "<rect x='0' y='0' width='266.66666666666663' height='20'></rect>"+
-                        "<rect x='0' y='20' width='133.33333333333331' height='20'></rect>"+
-                        "<rect x='0' y='40' width='300' height='20'></rect>"+
-                        "<rect x='0' y='60' width='400' height='20'></rect>"+
-                        "<text x='266.66666666666663' y='10' dx='-5' dy='.36em' text-anchor='end'>8</text>"+
-                        "<text x='133.33333333333331' y='30' dx='-5' dy='.36em' text-anchor='end'>4</text>"+
-                        "<text x='300' y='50' dx='-5' dy='.36em' text-anchor='end'>9</text>"+
-                        "<text x='400' y='70' dx='-5' dy='.36em' text-anchor='end'>12</text>"+
-                        "</svg>",{
+                        "<h2 class='popUpTitle'>"+feature.properties.name+"</h2>"+
+                        "<p class='popUpInfo'> Percent of student indicating that they likely use this resouce the next time they're assaulted</p>"+
+                        chartGenerator(feature),{
                             minWidth:300,
-                            maxWidth:500
+                            maxWidth:450
                             }
                     );
                 }

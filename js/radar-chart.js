@@ -200,9 +200,9 @@ var RadarChart = {
 						.transition(200)
 						.style("fill-opacity", cfg.opacityArea);
                     var allCircl = d3.selectAll(".male");
-                    allCircl.style('fill', "#ff9061");
+                    allCircl.style('fill', "#47A7C8");
                     allCircl = d3.selectAll(".female");
-                    allCircl.style('fill', "#59d8ec");
+                    allCircl.style('fill', "#47A7C8");
                     $("."+d3.select(this).attr("data-id")).tooltipster('hide');
                     d3.select("#info").classed("hidden",true);
 				  })

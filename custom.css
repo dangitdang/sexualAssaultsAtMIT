@@ -84,7 +84,7 @@ p:hover, h4:hover, li:hover{
 
 }
 .container{
-    margin-top:20px;
+    margin-top:30px;
     padding:0;
 }
 .nav {
@@ -95,7 +95,7 @@ p:hover, h4:hover, li:hover{
 }
 #info {
     position: absolute;
-    bottom: 0px;
+    top: 0px;
     left:0px;
     width:100%;
     height: auto;
@@ -111,14 +111,33 @@ p:hover, h4:hover, li:hover{
     pointer-events: none;
 }
 #info p{
-    padding-top:5px;
-    font-size: 1.2em;
+    padding-top:0px;
+    font-size: 1.1em;
     color: #2c3e50;
-    font-weight: normal;
+    font-weight: bold;
     opacity: 100%;
     -webkit-transition:opacity 3s;
     transition: opacity 3s;
 
+}
+.reportingGraph text {
+    fill: #2c3e50;
+}
+
+.chart rect {
+  stroke: white;
+  fill: steelblue;
+}
+.chart text {
+    fill:white;
+}
+.chart text.name{
+    fill:black;
+}
+.about h6{
+    padding-left: 50px;
+    color: #232323;
+    font-size: .7em;
 }
 #map {
     position:relative;
@@ -135,4 +154,16 @@ p:hover, h4:hover, li:hover{
 }
 .affected:hover {
    border:10px solid #ffffff;
+}
+
+.popUpTitle {
+    text-align: center;
+    padding-left:0;
+}
+.popUpInfo{
+    padding-left:0;
+    color: black;
+}
+.bar {
+    fill: #FF4242;
 }

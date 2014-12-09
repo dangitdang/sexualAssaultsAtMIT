@@ -140,7 +140,23 @@ var width = 680,
     padding = 6, // separation between nodes
     maxRadius = 12;
 
-
+function classificationGetter(situation){
+    if (situation === "assaulted") {
+        return "Been sexually assaulted";
+    } else if (situation === "stalked") {
+        return "Been stalked, followed, or received repeated unwanted messages,"+
+         "texts, emails, etc. from someone that made him or her uncomfortable";
+    } else if (situation === "abusiveRelationship") {
+        return "Been in a relationship that was controlling or abusive"+
+        "(physically, sexually, psychologically, emotionally, or financially)";
+    } else if (situation === "harassed") {
+        return "Been sexually harassed (Unwelcome sexual advances," +
+        "requests for sexual favors, and other verbal conduct of a" +
+        "sexual nature...or if conduct creates a hostile environment)";
+    } else {
+        return "Been raped";
+    }
+}
 function drawData(data){
     $(".facts").remove();
     d3.selectAll("svg").remove();
@@ -296,6 +312,16 @@ function drawData(data){
     $(".affected").tooltipster({
         theme: 'tooltipster-noir'
     });
+    var affected = d3.selectAll(".affected");
+    affected
+        .on('mouseover', function (d){
+            d3.select("#info")
+                .select(".attInfo")
+                .text(classificationGetter(data[0].Situation));
+            d3.select("#info").classed("hidden",false);
+    }).on('mouseout', function(){
+                d3.select("#info").classed("hidden",true);
+            });
 
 }
 function highlightAffected(data,index,array){
@@ -320,4 +346,5 @@ function highlightAffected(data,index,array){
         return d.icon;
     }).attr("class",function(d){ return d.class;})
       .attr("title",function(d){ return d.title;});
+
 }
