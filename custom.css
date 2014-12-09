@@ -22,11 +22,11 @@ a:hover {
     text-decoration:none;
 }
 a {
-    color:white;
+    color: #008093;
 }
 
 .facts {
-    color:#00A8C6;
+    color:#FF4242;
     font-size:1.25em;
     text-align:left;
     padding-left: 30px;
@@ -88,7 +88,7 @@ p:hover, h4:hover, li:hover{
     height: auto;
     padding: 10px;
     text-align:center;
-    background-color: #ecf0f1;
+    background-color: #FF4242;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     border-radius: 0px;
@@ -100,7 +100,7 @@ p:hover, h4:hover, li:hover{
 #info p{
     padding-top:0px;
     font-size: 1.1em;
-    color: #2c3e50;
+    color: #ffffff;
     font-weight: bold;
     opacity: 100%;
     -webkit-transition:opacity 3s;

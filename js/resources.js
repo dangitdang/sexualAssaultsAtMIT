@@ -29,7 +29,7 @@ function drawMap(){
     .setView([42.3598, -71.0921], 15);
 
 
-     d3.json('https://rawgit.com/dangitdang/sexualAssaultsAtMIT/master/data/resourses.geojson',
+     d3.json('https://cdn.rawgit.com/dangitdang/sexualAssaultsAtMIT/master/data/resourses.geojson',
              function(err, data){
                  console.log(data);
                  var radiusScale = d3.scale.linear().domain([0,100])

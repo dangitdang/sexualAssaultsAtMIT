@@ -39,8 +39,11 @@
                     <div class="title" style="height:765px">
                         <h2> Visualizing Sexual Assault at MIT</h2>
                         <div class="about">
-                            <h6> All of the data presented on this website was taken from the MIT Sexual Assault Survey. The survey has a response rate of 35%, or 3,844 students. </h6>
-                            <h6>Hover over the data for an interactive experience</h6>
+                            <h6> All of the data presented on this website was taken from the <a href="http://web.mit.edu/surveys/health/">MIT Sexual Assault Survey</a>. The survey has a response rate of 35%, or 3,844 students.
+                            The survey was conducted in the semester of Spring 2014. According to the survey summary, "the purpose of the survey was to understand
+                            students’ perceptions and opinions about different types of social behavior, and their experiences with sexual
+                            assault and sexual misconduct".</h6>
+                            <h6>This visualization highlights some but not all the data presented in the survey. Hover over the data for an interactive experience</h6>
                         <div>
                         <ul class="nav">
                             <li><h4 id="experiences">Student Experiences</h4>
@@ -67,7 +70,7 @@
                             </li>
                         </ul>
                         <div class="about">
-                            <h6>Made by Dang Pham with D3.js<h6>
+                            <h6>Made by <a href="http://dangph.am">Dang Pham</a> with <a href="http://d3js.org/">D3.js</a><h6>
                         </div>
                     </div>
 
@@ -86,6 +89,12 @@
                 $("h4").removeClass("active");
                 $(".active").removeClass("active");
                 $(this).addClass("active");
+                if ($(".misconducts").is(":visible")){
+                    $(".misconducts").toggle(600);
+                }
+                if ($(".exp-nav").is(":visible")){
+                    $(".exp-nav").toggle(600);
+                }
                 drawMap();
             });
             $("#experiences").click(function(){
@@ -94,12 +103,18 @@
                 $("h4").removeClass("active");
                 $(".active").removeClass("active");
                 $(this).addClass("active");
+                if ($(".misconducts").is(":visible")){
+                    $(".misconducts").toggle(600);
+                }
             });
             $("#misconduct").click(function(){
                 $(".misconducts").toggle(600);
                 $("h4").removeClass("active");
                 $(".active").removeClass("active");
                 $(this).addClass("active");
+                if ($(".exp-nav").is(":visible")){
+                    $(".exp-nav").toggle(600);
+                }
             });
             $("#labeled").click(function(){
                 $(".labeled-experience").toggle(600);

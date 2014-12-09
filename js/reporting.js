@@ -31,10 +31,10 @@ function drawGraph(){
     xScale.domain(data.map(function(d) {return d.category;}));
     svg.append("text")
         .attr("class", "chartTitle")
-        .attr("x",740/2)
+        .attr("x",xScale(data[2].category))
         .attr("y",0)
         .attr("text-anchor","middle")
-        .text("Why are you not reporting?");
+        .text("Thoughts or concerns students have when deciding to share their experience or not.");
 
     svg.append("g")
         .attr("class","x axis")
