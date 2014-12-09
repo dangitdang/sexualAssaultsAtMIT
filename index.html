@@ -142,6 +142,8 @@
                 $(this).addClass("active").siblings().removeClass("active");
             });
             $("#reporting").click(function(){
+                $(this).addClass("active");
+                $("#labeled").removeClass("active");
                 drawGraph();
             });
         </script>
